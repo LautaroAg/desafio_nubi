@@ -23,3 +23,4 @@ except:  # directory already exists
 # por ahora sobreescribe el archivo si ya existe
 with open(f'{directory}/jsonfile.json','w') as thisone:
     json.dump(res.json(),thisone)
+print(f'Archivo creado en {directory}')
