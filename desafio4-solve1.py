@@ -20,15 +20,13 @@ def  desafio4Solve1(
             csv_dict[row[2]] = row[1::conv_index] # currency id : date, local to dollar
         conversion_rate_list = []
 
-        for row in df.iterrows():        
+        for row in df.iterrows():
             if csv_dict[str(row[1]['currency_id'])][0] == (row[1][u'date']):
                 conversion_rate_list.append(csv_dict[str(row[1]['currency_id'])][1])
             else:
                 exit("No hay informacion para el dia: " + str(row[1][u'date']))
-
         df[conversion_rate] = conversion_rate_list
-
-        print(df[['currency_id',conversion_rate]])
-        print(df.columns)
+        df.columns = [str(col) for col in df.columns]
+        df.to_parquet('./joined.parquet', engine='auto')
 
 desafio4Solve1(conversion_rate='dolar_to_local')
