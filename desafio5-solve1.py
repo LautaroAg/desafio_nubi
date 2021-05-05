@@ -1,7 +1,11 @@
 import pandas as pd
-from sys import exit
 
 def desafio5Solve1(parquet_file='./joined.parquet'):
+    """
+    Resuelve el desafio 5 guardando el resultado en el archivo
+    'joinedWithRowKey.parquet'
+    """
+    
     df = pd.read_parquet(parquet_file, engine='auto')
     new_column = []
     for row in df.iterrows():
