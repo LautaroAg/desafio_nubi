@@ -15,13 +15,13 @@ def desafio6Solve1(parquet_file='./joinedWithRowKey.parquet'):
                 data_dict[(level,level_id)] += row[1]['sales']
             except:
                 data_dict[(level,level_id)] = 0
-    data_list = {'level':[],'level_id':[],'sales':[]}
+    data_final = {'level':[],'level_id':[],'sales':[]}
     for data_key in data_dict.keys():
-        data_list['level'].append(data_key[0])
-        data_list['level_id'].append(data_key[1])
-        data_list['sales'].append(data_dict[data_key])
-    print(data_list)
-    df_new = pd.DataFrame(data_list)
+        data_final['level'].append(data_key[0])
+        data_final['level_id'].append(data_key[1])
+        data_final['sales'].append(data_dict[data_key])
+    print(data_final)
+    df_new = pd.DataFrame(data_final)
     df_new.to_parquet('./levels.parquet')
     
 desafio6Solve1()
